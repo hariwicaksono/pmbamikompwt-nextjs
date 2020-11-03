@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import Route from 'next/router';
-import {Container, Form, Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap'
+import {Container, Form, Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
+import Search from './search';
 
 class NavBar extends Component {
     constructor(props){
@@ -27,22 +29,32 @@ class NavBar extends Component {
         
         return (
         <>
-            <header className="app-header app-header-dark" style={{backgroundColor:'#f2f2f2'}}>
-      
+            <header className="app-header app-header-dark" style={{backgroundColor:'#371260'}}>
+            <Container>
             <div className="top-bar">
             <div className="top-bar-brand">
-            <Button onClick={this.props.toggleMenu} className="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button> 
+            {/**<Button onClick={this.props.toggleMenu} className="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button> **/}
+            <Link href="/" passHref>
+              <a className="navbar-brand"><img src="/images/logo.png" width="200" /></a>
+            </Link>
             </div>
 
             <div className="top-bar-list">
-            <div className="top-bar-item px-2 d-md-none d-lg-none d-xl-none">
-              <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
+    
+            <div className="top-bar-item top-bar-item-full">
+              <Search/>
+            </div>
+
+            <div className="top-bar-item pr-2 d-md-none d-lg-none d-xl-none">
+            <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
             </div>
             </div>
 
             </div>
+            </Container>
             </header>
-            <aside className={this.state.showMobile ? 'app-aside app-aside-expand-md app-aside-light' : 'app-aside app-aside-expand-md app-aside-light show' }>
+
+            <aside className={this.state.showMobile ? 'app-aside' : 'app-aside app-aside-expand-md app-aside-light show' }>
             {this.state.showMobile ?     
             <></>
             :
@@ -50,9 +62,10 @@ class NavBar extends Component {
             <Button onClick={this.toggleMobile} type="button" className="btn btn-secondary float-right">
                 X
             </Button>
+            
             </>
             }
-            <div className="aside-content">
+            <div className="aside-content d-md-none d-lg-none d-xl-none">
          
             <header className="aside-header d-block d-md-none">
 

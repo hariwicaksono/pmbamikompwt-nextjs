@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Router from 'next/router';
 import '../styles/globals.css';
+import '../styles/styles.css';
 import 'spin.js/spin.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -25,10 +26,6 @@ class App extends Component {
       //if (!localStorage.getItem('isLogin')) {
         //return( Router.push('/login') )
       //}
-  }
-
-  static getInitialProps({ pathname }){
-    return { pathname }
   }
 
   render() {

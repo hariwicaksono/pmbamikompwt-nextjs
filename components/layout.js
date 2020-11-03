@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Navbar from './navbar';
 import Appbar from './appbar';
+import { Container } from 'react-bootstrap';
 
 export const siteName = 'PMB Universitas Amikom Purwokerto'
 export const siteTitle = 'PMB Universitas Amikom Purwokerto'
@@ -35,11 +36,9 @@ class Layout extends Component {
     <Navbar toggleMenu={this.toggleMenu} />
     <main className="app-main">
     <div className="wrapper">
-      <div className="page">
-        <div className="page-inner">
+        <Container>
         {children}
-        </div>
-      </div>
+        </Container>
     </div>
     </main>
     

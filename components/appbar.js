@@ -1,5 +1,7 @@
-import React,{Component} from 'react'
-import { Nav } from 'react-bootstrap'
+import React,{Component} from 'react';
+import Link from './link';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { MdHome, MdLibraryBooks, MdNotifications, MdPerson } from "react-icons/md";
 
 
 class Appbar extends Component{
@@ -15,20 +17,37 @@ class Appbar extends Component{
     render(){
         
         return(
-            <div className="pt-4 mt-4 d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
-            
+            <Navbar className="border-top text-center" variant="light" fixed="bottom" style={{backgroundColor:"#fafafa",height:"60px", position: "fixed"}}>
+              <Container>
+            <Nav id="appbar" fill style={{width: "100%"}}>  
               
-              <Nav id="appbar" fill className="mx-auto text-center border-top" style={{backgroundColor:"#fafafa",height:"60px", position: "fixed",width: "100%",left: "0",bottom: "0",zIndex:'99'}}>
+              <Nav.Item>
+              <Link href="/" activeClassName="active" passHref>
+              <Nav.Link><MdHome size="1.6rem"/><div>Home</div></Nav.Link>
+              </Link>
+              </Nav.Item>
 
-            <Nav.Item>
-               <div>Home</div>
-             </Nav.Item>
+              <Nav.Item>
+              <Link href="/feed" activeClassName="active" passHref>
+              <Nav.Link><MdLibraryBooks size="1.6rem"/><div>Feed</div></Nav.Link>
+              </Link>
+              </Nav.Item>
+
+              <Nav.Item>
+              <Link href="/notification" activeClassName="active" passHref>
+              <Nav.Link><MdNotifications size="1.6rem"/><div>Notifikasi</div></Nav.Link>
+              </Link>
+              </Nav.Item>
+
+              <Nav.Item>
+              <Link href="/login" activeClassName="active" passHref>
+              <Nav.Link><MdPerson size="1.6rem"/><div>Masuk</div></Nav.Link>
+              </Link>
+              </Nav.Item>
              
-              
-            
               </Nav>
-        
-        </div>
+              </Container>
+              </Navbar>
         )
     }
 }

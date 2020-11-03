@@ -1,0 +1,5 @@
+.navbar-brand img{height:100%;margin-top:-5px !important;margin-left: 2px;}
+#appbar a.nav-link{color: #424242;font-weight: 400;}
+#appbar a div{font-size: .800rem;margin-top:0}
+#appbar .active > .nav-link,
+#appbar .nav-link.active {color: #563d7c;}
