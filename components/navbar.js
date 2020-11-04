@@ -32,20 +32,42 @@ class NavBar extends Component {
             <header className="app-header app-header-dark" style={{backgroundColor:'#371260'}}>
             <Container>
             <div className="top-bar">
-            <div className="top-bar-brand">
+            <div className="top-bar-brand" style={{backgroundColor:'#371260'}}>
             {/**<Button onClick={this.props.toggleMenu} className="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button> **/}
-            <Link href="/" passHref>
+            {this.props.toggleBack ? 
+               <div>
+               <Link href="/">
+                 <a className="text-white">← Back</a>
+               </Link>
+             </div>
+             :
+             <Link href="/" passHref>
               <a className="navbar-brand"><img src="/images/logo.png" width="200" /></a>
             </Link>
+            }
+            
             </div>
 
             <div className="top-bar-list">
+            {this.props.toggleBack ? 
+               <div className="top-bar-item d-md-none d-lg-none d-xl-none">
+               <Link href="/">
+                 <a className="btn btn-secondary">← Kembali</a>
+               </Link>
+             </div>
+             :
+             <div className="top-bar-item d-md-none d-lg-none d-xl-none">
+             <Link href="/" passHref>
+              <a className="navbar-brand pt-1"><img src="/images/logo_uap.png" width="50" /></a>
+            </Link>
+            </div>
+            }
     
             <div className="top-bar-item top-bar-item-full">
               <Search/>
             </div>
 
-            <div className="top-bar-item pr-2 d-md-none d-lg-none d-xl-none">
+            <div className="top-bar-item d-md-none d-lg-none d-xl-none">
             <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
             </div>
             </div>

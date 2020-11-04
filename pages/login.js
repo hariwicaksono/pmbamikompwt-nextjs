@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import Head from 'next/head'
+import Layout, {siteTitle} from '../components/layout';
+import {Container, Row, Col, Carousel, Card, Button} from 'react-bootstrap';
+
 
 class Login extends Component{
   constructor(props) {
@@ -13,11 +17,19 @@ class Login extends Component{
     render(){
         
         return(
-        <>
-            
+       
+         <Layout>
+        <Head>
+        <title>Login - {siteTitle}</title>
+        </Head>
+
+        
+Login
+
+        </Layout>
              
         
-        </>
+      
         )
     }
 }
