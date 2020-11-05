@@ -23,8 +23,10 @@ class Login extends Component{
         <title>Login - {siteTitle}</title>
         </Head>
 
-        
-Login
+        <Card body>
+        Login
+        </Card>
+
 
         </Layout>
              

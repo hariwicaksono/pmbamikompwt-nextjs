@@ -41,6 +41,7 @@ class Layout extends Component {
     
     <main className="app-main">
     <div className="wrapper">
+      <div className="my-3">
         <Container>
         {children}
         {!home && (
@@ -51,6 +52,7 @@ class Layout extends Component {
         </div>
       )}
         </Container>
+    </div>
     </div>
     </main>
     

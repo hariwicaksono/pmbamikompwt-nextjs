@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Route from 'next/router';
 import {Container, Form, Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
+import {MdArrowBack} from 'react-icons/md';
 import Search from './search';
+import { logout, isLogin } from '../libs/Util'
 
 class NavBar extends Component {
     constructor(props){
         super(props)
         this.state = {
-            showMobile: true
+          login: false,
+          showMobile: true
         }
         this.toggleMobile = this.toggleMobile.bind(this)
     }
 
     Logout = () => {
-        
-
+      logout();
     }
 
     toggleMobile = function() {
@@ -23,58 +25,161 @@ class NavBar extends Component {
       }
 
     componentDidMount = () => {
-     
+      if (isLogin()) {
+        //console.log('LOGIN')
+        const data = JSON.parse(localStorage.getItem('isLogin'))
+        const id = data[0].email
+     } else {
+         this.setState({
+             login:true
+         })
+     }
     }
     render() {
         
         return (
         <>
-            <header className="app-header app-header-dark" style={{backgroundColor:'#371260'}}>
-            <Container>
-            <div className="top-bar">
-            <div className="top-bar-brand" style={{backgroundColor:'#371260'}}>
-            {/**<Button onClick={this.props.toggleMenu} className="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button> **/}
-            {this.props.toggleBack ? 
-               <div>
-               <Link href="/">
-                 <a className="text-white">← Back</a>
-               </Link>
-             </div>
-             :
-             <Link href="/" passHref>
-              <a className="navbar-brand"><img src="/images/logo.png" width="200" /></a>
+        <header className="app-header">
+        {this.props.toggleBack ? 
+          <Navbar className="shadow-sm" variant="light" expand="lg" fixed="top" style={{backgroundColor:'#fff'}}>
+          <Container>
+
+          <Navbar.Brand > 
+          <Link href="/">
+            <a className="hamburger hamburger-squeeze"><MdArrowBack size="1.4rem"/></a>
             </Link>
-            }
+          </Navbar.Brand>
+
+          <Navbar.Collapse id="basic-navbar-nav">
+              
+            <Search/>   
+
+            <Nav>
+              
+              {this.state.login ?
+              <>
+              <Link href="/login" passHref>
+              <Button variant="info">Daftar/Masuk</Button>
+              </Link>
+              </>
+            :
             
-            </div>
+            <NavDropdown title=
+            {this.state.foto ? (
+              <>
+              <img
+                  alt="Foto"
+                  width="30"
+                  className="rounded-circle"
+                  src={this.state.url+this.state.foto} />
+              </>
+                  ) : (
+              <>
+              <img
+                  alt="Foto"
+                  width="30"
+                  className="rounded-circle"
+                  src={this.state.url+'no-photo.jpg'} />
+              </>
+              )} id="basic-nav-dropdown" alignRight>
+              <NavDropdown.Item >Akun</NavDropdown.Item>
+              <NavDropdown.Item onClick={this.Logout} href=''>Keluar</NavDropdown.Item>
+              </NavDropdown>
 
-            <div className="top-bar-list">
-            {this.props.toggleBack ? 
-               <div className="top-bar-item d-md-none d-lg-none d-xl-none">
-               <Link href="/">
-                 <a className="btn btn-secondary">← Kembali</a>
-               </Link>
-             </div>
-             :
-             <div className="top-bar-item d-md-none d-lg-none d-xl-none">
-             <Link href="/" passHref>
-              <a className="navbar-brand pt-1"><img src="/images/logo_uap.png" width="50" /></a>
-            </Link>
-            </div>
-            }
-    
-            <div className="top-bar-item top-bar-item-full">
-              <Search/>
-            </div>
+              }
+              </Nav>
 
-            <div className="top-bar-item d-md-none d-lg-none d-xl-none">
-            <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
-            </div>
-            </div>
+          </Navbar.Collapse>
+          <div className="d-md-none d-lg-none d-xl-none">
+          <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
+          </div>
+          </Container>
+          </Navbar>
+        :
 
-            </div>
-            </Container>
-            </header>
+      <Navbar className="shadow-sm" variant="dark" expand="lg" fixed="top" style={{backgroundColor:'#371260'}}>
+      <Container>
+
+      <Navbar.Brand > 
+      <Link href="/" passHref>
+      <a><img src="/images/logo.png" width="200" /></a>
+    </Link>
+      </Navbar.Brand>
+
+      <Navbar.Collapse id="basic-navbar-nav">
+          <Nav>  
+          {this.state.login ?
+            <>
+            </>
+            :
+            <NavDropdown title={'Menu User'} id="basic-nav-dropdown">
+              <NavDropdown.Item>Dashboard</NavDropdown.Item>
+              <NavDropdown.Item >Form Pendaftaran</NavDropdown.Item>
+              <NavDropdown.Item >Upload Dokumen</NavDropdown.Item>
+              <NavDropdown.Item >Akun</NavDropdown.Item>
+        </NavDropdown>
+          }    
+
+          <NavDropdown title="Menu Utama" id="basic-nav-dropdown">
+          <NavDropdown.Item >Alur Pendaftaran</NavDropdown.Item>
+          <NavDropdown.Item >Jenis Pendaftaran</NavDropdown.Item>
+          <NavDropdown.Item >Syarat Pendaftaran</NavDropdown.Item>
+          <NavDropdown.Item >Prosedur Pendaftaran</NavDropdown.Item>
+          
+          <NavDropdown.Item>Beasiswa - Beasiswa</NavDropdown.Item>
+          <NavDropdown.Item>Tata Tertib Penerimaan Mahasiswa Baru</NavDropdown.Item>
+          <NavDropdown.Item>Kegiatan Pra Kuliah Mahasiswa Baru</NavDropdown.Item>
+          </NavDropdown>
+
+        </Nav> 
+
+        <Search/>   
+
+        <Nav>
+          
+          {this.state.login ?
+          <>
+          <Link href="/login" passHref>
+          <Button variant="info" activeClassName="active">Daftar/Masuk</Button>
+          </Link>
+          </>
+        :
+        
+        <NavDropdown title=
+        {this.state.foto ? (
+          <>
+          <img
+              alt="Foto"
+              width="30"
+              className="rounded-circle"
+              src={this.state.url+this.state.foto} />
+          </>
+              ) : (
+          <>
+          <img
+              alt="Foto"
+              width="30"
+              className="rounded-circle"
+              src={this.state.url+'no-photo.jpg'} />
+          </>
+          )} id="basic-nav-dropdown" alignRight>
+          <NavDropdown.Item >Akun</NavDropdown.Item>
+          <NavDropdown.Item onClick={this.Logout} href=''>Keluar</NavDropdown.Item>
+          </NavDropdown>
+
+          }
+          </Nav>
+
+      </Navbar.Collapse>
+      <div className="d-md-none d-lg-none d-xl-none">
+      <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
+      </div>
+      </Container>
+      </Navbar>
+        
+      } 
+        
+          </header>
 
             <aside className={this.state.showMobile ? 'app-aside' : 'app-aside app-aside-expand-md app-aside-light show' }>
             {this.state.showMobile ?     

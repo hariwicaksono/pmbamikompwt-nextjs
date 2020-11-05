@@ -23,25 +23,25 @@ class Appbar extends Component{
               
               <Nav.Item>
               <Link href="/" activeClassName="active" passHref>
-              <Nav.Link><MdHome size="1.6rem"/><div>Home</div></Nav.Link>
+              <Nav.Link><MdHome size="1.4rem"/><div>Home</div></Nav.Link>
               </Link>
               </Nav.Item>
 
               <Nav.Item>
               <Link href="/feed" activeClassName="active" passHref>
-              <Nav.Link><MdLibraryBooks size="1.6rem"/><div>Feed</div></Nav.Link>
+              <Nav.Link><MdLibraryBooks size="1.4rem"/><div>Feed</div></Nav.Link>
               </Link>
               </Nav.Item>
 
               <Nav.Item>
               <Link href="/notification" activeClassName="active" passHref>
-              <Nav.Link><MdNotifications size="1.6rem"/><div>Notifikasi</div></Nav.Link>
+              <Nav.Link><MdNotifications size="1.4rem"/><div>Notifikasi</div></Nav.Link>
               </Link>
               </Nav.Item>
 
               <Nav.Item>
               <Link href="/login" activeClassName="active" passHref>
-              <Nav.Link><MdPerson size="1.6rem"/><div>Masuk</div></Nav.Link>
+              <Nav.Link><MdPerson size="1.4rem"/><div>Masuk</div></Nav.Link>
               </Link>
               </Nav.Item>
              

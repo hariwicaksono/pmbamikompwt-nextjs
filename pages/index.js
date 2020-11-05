@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from 'next/link';
 import Layout, {siteTitle} from '../components/layout';
 import {Container, Row, Col, Carousel, Card, Button} from 'react-bootstrap';
 
@@ -11,14 +12,12 @@ class Home extends Component {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
-     
-
-      <Carousel className="my-3">
+      
+      <Carousel className="my-3 shadow-sm">
                 <Carousel.Item>
                     <img
                     className="d-block w-100"
-                    src="http://pmb.amikompurwokerto.ac.id/files/Slider_.png"
+                    src="http://pmb.amikompurwokerto.ac.id/files/Slider2020-11-05.09.50.46.jpeg"
                     alt="First slide"
                     />
                     
@@ -51,21 +50,66 @@ class Home extends Component {
                     
                 </Carousel.Item>
             </Carousel>
-      <header className="page-title-bar">
-                <div className="d-flex flex-column flex-md-row">
-                  <p className="lead">
-                    <span className="font-weight-bold">Hi, Hari.</span> <span className="d-block text-muted">When single-page applications were really getting popular in the early Backbone/Ember/Angular days, one of the biggest selling points was that you could navigate around your site without re-rendering the entire document from scratch every time the URL changed.
+      
+            <Card className="h-100">
+            <Card.Body>
+           
+            <Row className="text-center row-cols-4 px-2" noGutters>
+                <Col>
+                
+                <Card>
+                
+                <Card.Body className="p-2">
+                    <img src="/images/iconpack/directions_216453.png" alt="" width="60" />
+                    </Card.Body>
+                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Alur Pendaftaran</small>
+                </Card>
+                
+              
+                </Col>
+                <Col>
+                
+                <Card>
+                    
+                    <Card.Body className="p-2">
+                    <img src="/images/iconpack/list_240279.png" alt="" width="60" />
+                    </Card.Body>
+                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Jenis Pendaftaran</small>
+                </Card>
+                
+               
+                </Col>
+                <Col>
+               
+                <Card>
+                    
+                    <Card.Body className="p-2">
+                   <img src="/images/iconpack/smartphone.png" alt="" width="60" />
+                    </Card.Body>
+                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Syarat Pendaftaran</small>
+                </Card>
+               
+               
+                </Col>
+                <Col>
+               
+                <Card>
+               
+                <Card.Body className="p-2">
+                    <img src="/images/iconpack/calendar_243925.png" alt="" width="60" />
+                    </Card.Body>
+                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Gelombang Pendaftaran</small>
+                </Card>
+               
+               
+                </Col>
+                
+            </Row>
 
-This meant you could do things like preserve the scroll position in part of the UI that didn't change (like a sidebar for example) without the complexity of measuring it and trying to restore it on the next page load like you'd have to do in a traditional server-driven application.
+          
 
-Because this benefit was so heavily advertised, I was very surprised to find out that in many modern single-page application frameworks like Next.js and Gatsby, the default experience is re-rendering the entire UI every time you click a link — throwing away that nice feeling of a persistent UI we worked so hard to achieve a decade ago!
-
-Next.js is such a wonderfully productive development experience and produces such incredibly fast websites that I just refused to believe it had to be this way.
-
-So I spent a few weeks researching, asking questions, and experimenting, and came up with these four patterns for persistent layouts in Next.js applications.</span>
-                  </p>
-                </div>
-      </header>
+            </Card.Body>
+            </Card>
 
 
       </Layout>
