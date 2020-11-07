@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
   return (
   
-     <Layout home>
+    <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -51,68 +51,63 @@ class Home extends Component {
                 </Carousel.Item>
             </Carousel>
       
-            <Card className="h-100">
-            <Card.Body>
-           
-            <Row className="text-center row-cols-4 px-2" noGutters>
+            <div className="card mb-2">
+            <div className="card-body">
+                <ul className="feature-list feature-list-sm row">
+                <li className="col-md-6 mb-0">
+                    <a className="card text-center" href="http://fik.amikompurwokerto.ac.id">
+                    <div className="card-body">
+                    <img src="http://pmb.amikompurwokerto.ac.id/assets/main/images/iconpack/80xNxweb-development_2210153.png.pagespeed.ic.3ceQobAX7f.webp" alt="Fakultas Ilmu Komputer" width="80" />
+                    <h5>Fakultas Ilmu Komputer</h5>
+                    </div>
+                    </a>
+                </li>
+
+                <li className="col-md-6 mb-0">
+                    <a className="card text-center" href="http://fbis.amikompurwokerto.ac.id">
+                    <div className="card-body">
+                    <img src="http://pmb.amikompurwokerto.ac.id/assets/main/images/iconpack/80xNxdiagram_2210211.png.pagespeed.ic.GWP-mVkNQW.webp" alt="Fakultas Bisnis &amp; Ilmu Sosial" width="80" />
+                    <h5>Fakultas Bisnis &amp; Ilmu Sosial</h5> 
+                    </div>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            </div>
+
+           <Card body>
+            <Row className="text-center row-cols-4">
+                <Link href="/login" passHref><a>
                 <Col>
-                
-                <Card>
-                
-                <Card.Body className="p-2">
-                    <img src="/images/iconpack/directions_216453.png" alt="" width="60" />
-                    </Card.Body>
-                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Alur Pendaftaran</small>
-                </Card>
-                
-              
+                    <img src="https://uselooper.com/assets/images/illustration/lab.svg" alt="" height="72" />
+                    <h6>Alur Pendaftaran</h6>
+                </Col>
+                </a></Link>
+                <Col>
+                    <img src="https://uselooper.com/assets/images/illustration/easy-config.svg" alt="" height="72" />
+                    <h6>Jenis Pendaftaran</h6>
                 </Col>
                 <Col>
-                
-                <Card>
-                    
-                    <Card.Body className="p-2">
-                    <img src="/images/iconpack/list_240279.png" alt="" width="60" />
-                    </Card.Body>
-                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Jenis Pendaftaran</small>
-                </Card>
-                
-               
+                   <img src="https://uselooper.com/assets/images/illustration/scale.svg" alt="" height="72" />
+                    <h6>Syarat Pendaftaran</h6>
                 </Col>
                 <Col>
-               
-                <Card>
-                    
-                    <Card.Body className="p-2">
-                   <img src="/images/iconpack/smartphone.png" alt="" width="60" />
-                    </Card.Body>
-                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Syarat Pendaftaran</small>
-                </Card>
-               
-               
-                </Col>
-                <Col>
-               
-                <Card>
-               
-                <Card.Body className="p-2">
-                    <img src="/images/iconpack/calendar_243925.png" alt="" width="60" />
-                    </Card.Body>
-                    <small style={{color: "#2E4F60",fontWeight: "600"}}>Gelombang Pendaftaran</small>
-                </Card>
-               
-               
+                    <img src="https://uselooper.com/assets/images/illustration/support.svg" alt="" height="72" />
+                    <h6>Gel. Pendaftaran</h6>
                 </Col>
                 
             </Row>
-
-          
-
-            </Card.Body>
             </Card>
 
+    <style jsx>{`
+    h6 {
+    color: #2E4F60;
+    font-size: .875rem;
+    font-weight: 400}
+    `}</style>
 
-      </Layout>
+    </Layout>
+      
 
   );
   }

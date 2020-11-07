@@ -21,7 +21,7 @@ class Layout extends Component {
     this.setState({ showMenu: !this.state.showMenu });
   }
   render() {
-    const { children, home } = this.props;
+    const { children, home, search } = this.props;
 
   return (
     <>
@@ -32,16 +32,16 @@ class Layout extends Component {
     <meta name="description" content="" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     </Head>
+    <body>
     <div className={this.state.showMenu ? 'app' : 'app has-compact-menu' } >
-    {home ? 
-    <Navbar toggleMenu={this.toggleMenu} />
-    :
-    <Navbar toggleMenu={this.toggleMenu} toggleBack={true} />
-      }
+    { home ? <Navbar toggleMenu={this.toggleMenu} />
+    : search ? <Navbar toggleMenu={this.toggleMenu} toggleBack={true} isSearch={true} />
+    : <Navbar toggleMenu={this.toggleMenu} toggleBack={true} isSearch={false} />
+    }
     
     <main className="app-main">
     <div className="wrapper">
-      <div className="my-3">
+      <div className="mt-3 mb-5">
         <Container>
         {children}
         {!home && (
@@ -58,6 +58,7 @@ class Layout extends Component {
     
     </div>
     <Appbar/>
+    </body>
     </>
   );
   }

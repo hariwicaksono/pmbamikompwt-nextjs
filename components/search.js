@@ -49,9 +49,9 @@ class LoginForm extends Component {
 
         return (
             <>
-                <Form className="px-2 my-auto w-100" onSubmit={this.handlerSubmit}>
+                <Form className="my-auto w-100" onSubmit={this.handlerSubmit}>
                 <div className="input-group">
-                    <Form.Control className="border" type="text" name="query" placeholder="Pencarian..." onChange={this.handlerChange} required/>
+                    <Form.Control className="border" type="text" name="query" placeholder="Pencarian..." onChange={this.handlerChange} required autoFocus/>
                     <span className="input-group-append">
                     <Button className="py-1" type="submit" variant="light">
                     {

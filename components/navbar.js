@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import Route from 'next/router';
-import {Container, Form, Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
-import {MdArrowBack} from 'react-icons/md';
+import {Container, Form, FormControl, Button, Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap';
+import {MdArrowBack, MdSearch} from 'react-icons/md';
 import Search from './search';
 import { logout, isLogin } from '../libs/Util'
 
@@ -40,30 +40,49 @@ class NavBar extends Component {
         return (
         <>
         <header className="app-header">
-        {this.props.toggleBack ? 
-          <Navbar className="shadow-sm" variant="light" expand="lg" fixed="top" style={{backgroundColor:'#fff'}}>
+
+        {this.props.toggleBack === true && this.props.isSearch === false ? 
+          <Navbar className="shadow-sm" variant="light" expand="lg" style={{backgroundColor:'#fff'}}>
           <Container>
 
           <Navbar.Brand > 
           <Link href="/">
-            <a className="hamburger hamburger-squeeze"><MdArrowBack size="1.4rem"/></a>
+            <a><MdArrowBack size="1.8rem"/></a>
             </Link>
           </Navbar.Brand>
+          <div className="d-none d-sm-none d-md-block">
+         
+          </div>
+          <Navbar.Collapse id="navbar-nav">
+          <Nav className="mr-auto">
+          <Navbar.Text>
+            Signed
+          </Navbar.Text>
 
-          <Navbar.Collapse id="basic-navbar-nav">
-              
-            <Search/>   
+          </Nav> 
+          
+          <Link href="/search" passHref>
+          <Form className="px-2 my-auto w-25">
+          <div className="input-group">
+            <FormControl type="text" placeholder="Search" className="border" />
+            <span className="input-group-append">
+            <Button className="py-1" type="submit" variant="light">
+                   <MdSearch size="1.6rem" />
+                   </Button>
+            </span>
+            </div>
+          </Form> 
+          </Link>
+          
 
-            <Nav>
-              
               {this.state.login ?
-              <>
+               <Nav>
               <Link href="/login" passHref>
               <Button variant="info">Daftar/Masuk</Button>
               </Link>
-              </>
+              </Nav>
             :
-            
+            <Nav>
             <NavDropdown title=
             {this.state.foto ? (
               <>
@@ -85,16 +104,41 @@ class NavBar extends Component {
               <NavDropdown.Item >Akun</NavDropdown.Item>
               <NavDropdown.Item onClick={this.Logout} href=''>Keluar</NavDropdown.Item>
               </NavDropdown>
-
-              }
               </Nav>
-
+              }
+          
           </Navbar.Collapse>
           <div className="d-md-none d-lg-none d-xl-none">
+          <Navbar.Text>
+            Signed
+          </Navbar.Text>
+          </div>
+          <div className="d-md-none d-lg-none d-xl-none">
+          <Link href="/search" passHref>
+          <Button className="hamburger hamburger-squeeze float-left mr-2" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C',color:'#f2f2f2'}}><MdSearch size="1.4rem"/></Button>
+          </Link>
           <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
           </div>
           </Container>
           </Navbar>
+        : this.props.toggleBack === true && this.props.isSearch === true ?
+      <>
+      <Navbar className="shadow-sm" variant="light" expand="lg" style={{backgroundColor:'#fff'}}>
+          <Container>
+
+          <Navbar.Brand > 
+          <Link href="/">
+            <a><MdArrowBack size="1.8rem"/></a>
+            </Link>
+          </Navbar.Brand>
+
+          <div className="top-bar-item-full">
+          <Search/>
+          </div>
+
+          </Container>
+          </Navbar>
+</>
         :
 
       <Navbar className="shadow-sm" variant="dark" expand="lg" fixed="top" style={{backgroundColor:'#371260'}}>
@@ -107,20 +151,22 @@ class NavBar extends Component {
       </Navbar.Brand>
 
       <Navbar.Collapse id="basic-navbar-nav">
-          <Nav>  
+          
           {this.state.login ?
             <>
             </>
             :
-            <NavDropdown title={'Menu User'} id="basic-nav-dropdown">
+            <Nav className="mr-auto">  
+            <NavDropdown title={'Menu User'} id="basic-nav-dropdown" className="font-weight-bold">
               <NavDropdown.Item>Dashboard</NavDropdown.Item>
               <NavDropdown.Item >Form Pendaftaran</NavDropdown.Item>
               <NavDropdown.Item >Upload Dokumen</NavDropdown.Item>
               <NavDropdown.Item >Akun</NavDropdown.Item>
         </NavDropdown>
+        </Nav>
           }    
-
-          <NavDropdown title="Menu Utama" id="basic-nav-dropdown">
+          <Nav className="mr-auto">
+          <NavDropdown title="Menu Utama" id="basic-nav-dropdown" className="font-weight-bold">
           <NavDropdown.Item >Alur Pendaftaran</NavDropdown.Item>
           <NavDropdown.Item >Jenis Pendaftaran</NavDropdown.Item>
           <NavDropdown.Item >Syarat Pendaftaran</NavDropdown.Item>
@@ -131,20 +177,29 @@ class NavBar extends Component {
           <NavDropdown.Item>Kegiatan Pra Kuliah Mahasiswa Baru</NavDropdown.Item>
           </NavDropdown>
 
-        </Nav> 
+          </Nav> 
 
-        <Search/>   
+          <Link href="/search" passHref>
+          <Form className="px-2 my-auto w-100">
+          <div className="input-group">
+            <FormControl type="text" placeholder="Search" className="border" />
+            <span className="input-group-append">
+            <Button className="py-1" type="submit" variant="light">
+                   <MdSearch size="1.6rem" />
+                   </Button>
+            </span>
+            </div>
+          </Form> 
+          </Link>
 
-        <Nav>
-          
           {this.state.login ?
-          <>
+           <Nav>
           <Link href="/login" passHref>
           <Button variant="info" activeClassName="active">Daftar/Masuk</Button>
           </Link>
-          </>
+          </Nav>
         :
-        
+        <Nav>
         <NavDropdown title=
         {this.state.foto ? (
           <>
@@ -166,12 +221,15 @@ class NavBar extends Component {
           <NavDropdown.Item >Akun</NavDropdown.Item>
           <NavDropdown.Item onClick={this.Logout} href=''>Keluar</NavDropdown.Item>
           </NavDropdown>
-
-          }
           </Nav>
-
+          }
+        
       </Navbar.Collapse>
+        
       <div className="d-md-none d-lg-none d-xl-none">
+      <Link href="/search" passHref>
+          <Button className="hamburger hamburger-squeeze float-left mr-2" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C',color:'#f2f2f2'}}><MdSearch size="1.4rem"/></Button>
+          </Link>
       <Button onClick={this.toggleMobile} className="hamburger hamburger-squeeze float-left" type="button" data-toggle="aside" aria-label="toggle menu" style={{backgroundColor:'#563D7C'}}><span className="hamburger-box"><span className="hamburger-inner"></span></span></Button>
       </div>
       </Container>
